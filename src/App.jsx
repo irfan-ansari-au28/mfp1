@@ -1,21 +1,22 @@
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { throttle } from "./JS/throttle";
+// import { throttle } from "./JS/throttle";
+import { Component2 } from "./components/Component2";
 
 function App() {
   // const data = [
   //   { id: 1, name: "ryan" },
   //   { id: 2, name: "john" },
   // ];
-  function logMessage() {
-    console.log("throttle - Executed");
-  }
-  const onClickHandler = () => {
-    console.log("btn clicked");
-    const throttledLogMessage = throttle(logMessage, 5000);
-    throttledLogMessage();
-  };
+  // function logMessage() {
+  //   console.log("throttle - Executed");
+  // }
+  // const onClickHandler = () => {
+  //   console.log("btn clicked");
+  //   const throttledLogMessage = throttle(logMessage, 5000);
+  //   throttledLogMessage();
+  // };
 
   return (
     <>
@@ -25,8 +26,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        {/* <Component1 /> */}
-        <button onClick={onClickHandler}>Click me</button>
+        <Component2 />
+        {/* <button onClick={onClickHandler}>Click me</button> */}
       </div>
     </>
   );
