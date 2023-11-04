@@ -1,18 +1,51 @@
 import { useState } from "react";
 
-function useLocalStorage(key, initialValue) {
-  const storedValue = localStorage.getItem(key);
+//const [name, setName] = useLocalStorage("name, value");
 
-  const [value, setValue] = useState(
-    storedValue ? JSON.parse(storedValue) : initialValue
-  );
+const useLocalstorage = (key, initialValue) => {
+  console.log(key, initialValue);
+  const [storedValue, setStoredValue] = useState(() => {
+    if (typeof window === "undefined") {
+      return initialValue;
+    }
 
-  const setStoredValue = (newValue) => {
-    setValue(newValue);
-    localStorage.setItem(key, JSON.stringify(newValue));
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.log(error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value) => {
+    try {
+      setStoredValue(value);
+      if (typeof window !== "undefined") {
+        localStorage.setItem(key, JSON.stringify(value));
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+  return [storedValue, setValue];
+};
 
-  return [value, setStoredValue];
-}
+export default useLocalstorage;
 
-export default useLocalStorage;
+// function useLocalStorage(key, initialValue) {
+//   const storedValue = localStorage.getItem(key);
+
+//   const [value, setValue] = useState(
+//     storedValue ? JSON.parse(storedValue) : initialValue
+//   );
+
+//   const setStoredValue = (newValue) => {
+//     setValue(newValue);
+//     localStorage.setItem(key, JSON.stringify(newValue));
+//   };
+
+//   return [value, setStoredValue];
+// }
+
+// export default useLocalStorage;
