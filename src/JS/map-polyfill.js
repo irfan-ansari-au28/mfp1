@@ -13,4 +13,4 @@ Array.prototype.customMap2 = function (callback, thisArg) {
   return newArray;
 };
 
-[1, 2, 3].customMap2((i, idx, self) => i ** 2);
+[1, 2, 3].customMap2((i) => i ** 2);

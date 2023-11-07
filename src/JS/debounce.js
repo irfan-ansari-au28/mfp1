@@ -4,7 +4,8 @@ function debounce(func, delay) {
   return function debounced(...args) {
     const context = this;
 
-    console.log(timer);
+    // console.log(timer);
+    clearTimeout(timer);
     timer = setTimeout(() => {
       func.apply(context, ...args);
     }, delay);
