@@ -1,6 +1,6 @@
 // insertionSort([0,1,4,3,2,5])
 
-function insertionSort(arr) {
+function selectionSort(arr) {
   for (let i = 0; i < arr.length; i++) {
     let min = i;
     for (let j = i + 1; j < arr.length; j++) {
@@ -17,7 +17,7 @@ function insertionSort(arr) {
   return arr;
 }
 
-console.log(insertionSort([0, 1, 4, 5, 2, 3]));
+console.log(selectionSort([0, 1, 4, 5, 2, 3]));
 
 // function insertionSort(arr){
 //     for(let i=0; i<arr.length; i++){
